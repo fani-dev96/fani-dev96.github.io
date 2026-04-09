@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federica Fanì — Social Media Manager</title>
+<meta name="description" content="Social Media Manager a Roma. Strategia, contenuti, fotografia e gestione completa dei profili social per locali, negozi e professionisti.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1a3caa;
+    --blue-dark: #102880;
+    --blue-light: #eef2ff;
+    --blue-mid: #c7d4f7;
+    --white: #ffffff;
+    --ink: #0d1526;
+    --ink-muted: #4a5878;
+    --ink-faint: #8a97b5;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--white);
+    overflow-x: hidden;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 5%;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--blue-mid);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(26,60,170,.08); }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: .01em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    font-size: .85rem;
+    font-weight: 400;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--white) !important;
+    background: var(--blue);
+    padding: .55rem 1.4rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: .3s; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 5% 5rem;
+    gap: 4rem;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 560px; height: 560px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    z-index: 0;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: .8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--blue);
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--ink);
+    margin-bottom: 1.6rem;
+    letter-spacing: -.01em;
+  }
+  h1 em { font-style: italic; color: var(--blue); }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    max-width: 420px;
+    margin-bottom: 2.4rem;
+    line-height: 1.8;
+  }
+  .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    padding: .9rem 2.2rem;
+    font-size: .88rem;
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background .2s, transform .2s;
+  }
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
+  .btn-secondary {
+    display: inline-block;
+    border: 1.5px solid var(--blue);
+    color: var(--blue);
+    padding: .9rem 2.2rem;
+    font-size: .88rem;
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background .2s, color .2s, transform .2s;
+  }
+  .btn-secondary:hover { background: var(--blue); color: var(--white); transform: translateY(-2px); }
+
+  .hero-image {
+    position: relative; z-index: 1;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .photo-frame {
+    width: 380px; height: 460px;
+    position: relative;
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    top: 18px; left: 18px;
+    width: 100%; height: 100%;
+    border: 2px solid var(--blue-mid);
+    border-radius: 2px;
+    z-index: 0;
+  }
+  .photo-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    border-radius: 2px;
+    position: relative;
+    z-index: 1;
+    background: var(--blue-light);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--blue);
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    gap: .5rem;
+  }
+  .photo-placeholder svg { opacity: .35; }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    margin-top: 2.8rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--blue-mid);
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--blue);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: .78rem;
+    color: var(--ink-faint);
+    margin-top: .3rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 5%; }
+  .section-tag {
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: flex; align-items: center; gap: .8rem;
+    margin-bottom: 1rem;
+  }
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 28px; height: 1px;
+    background: var(--blue);
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+  h2 em { font-style: italic; color: var(--blue); }
+
+  /* ── CHI SONO ── */
+  #about {
+    background: var(--blue-light);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-text p {
+    color: var(--ink-muted);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+  .about-pills {
+    display: flex; flex-wrap: wrap; gap: .6rem;
+    margin-top: 2rem;
+  }
+  .pill {
+    display: inline-block;
+    padding: .4rem 1rem;
+    border: 1px solid var(--blue-mid);
+    border-radius: 20px;
+    font-size: .8rem;
+    color: var(--blue-dark);
+    background: var(--white);
+    font-weight: 400;
+  }
+  .about-photo {
+    width: 100%; aspect-ratio: 4/5;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .about-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .about-photo-placeholder {
+    width: 100%; height: 100%;
+    background: var(--blue-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    color: var(--blue);
+    font-style: italic;
+    font-size: 1rem;
+  }
+
+  /* ── SERVIZI ── */
+  #servizi { background: var(--white); }
+  .servizi-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+  .servizi-desc { color: var(--ink-muted); font-size: 1rem; max-width: 420px; }
+  .servizi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--blue-mid);
+    border: 1.5px solid var(--blue-mid);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .servizio {
+    background: var(--white);
+    padding: 2.4rem 2rem;
+    transition: background .25s;
+  }
+  .servizio:hover { background: var(--blue-light); }
+  .servizio-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--blue-light);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.4rem;
+    color: var(--blue);
+  }
+  .servizio h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: .8rem;
+  }
+  .servizio p { font-size: .9rem; color: var(--ink-muted); line-height: 1.75; }
+  .servizio ul { list-style: none; margin-top: 1rem; }
+  .servizio ul li {
+    font-size: .85rem;
+    color: var(--ink-muted);
+    padding: .3rem 0;
+    border-bottom: 1px solid var(--blue-light);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .servizio ul li::before { content: '→'; color: var(--blue); font-size: .8rem; flex-shrink: 0; }
+
+  /* ── PREZZI ── */
+  #prezzi { background: var(--ink); color: var(--white); }
+  #prezzi .section-tag { color: var(--blue-mid); }
+  #prezzi .section-tag::before { background: var(--blue-mid); }
+  #prezzi h2 { color: var(--white); }
+  #prezzi h2 em { color: var(--blue-mid); }
+  .prezzi-note {
+    font-size: .95rem;
+    color: rgba(255,255,255,.55);
+    max-width: 500px;
+    margin-bottom: 3.5rem;
+  }
+  .prezzi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(255,255,255,.1);
+    border: 1.5px solid rgba(255,255,255,.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .piano { background: rgba(255,255,255,.04); padding: 2.5rem 2rem; }
+  .piano.featured { background: var(--blue); }
+  .piano-badge {
+    font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--blue); background: var(--white); padding: .3rem .9rem;
+    border-radius: 20px; display: inline-block; margin-bottom: 1.5rem;
+  }
+  .piano h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: var(--white); margin-bottom: .4rem; }
+  .piano-price { font-family: var(--serif); font-size: 2.6rem; font-weight: 600; color: var(--white); line-height: 1; margin: 1.2rem 0 .4rem; }
+  .piano-price span { font-size: 1rem; font-weight: 300; opacity: .6; }
+  .piano-from { font-size: .78rem; color: rgba(255,255,255,.5); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: .06em; }
+  .piano ul { list-style: none; }
+  .piano ul li { font-size: .88rem; color: rgba(255,255,255,.75); padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.08); display: flex; align-items: flex-start; gap: .6rem; }
+  .piano.featured ul li { color: rgba(255,255,255,.9); }
+  .piano ul li::before { content: '✓'; color: var(--blue-mid); font-size: .8rem; flex-shrink: 0; margin-top: .1rem; }
+  .piano.featured ul li::before { color: var(--white); }
+  .prezzi-footer { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.1); font-size: .9rem; color: rgba(255,255,255,.5); text-align: center; }
+  .prezzi-footer a { color: var(--blue-mid); text-decoration: underline; cursor: pointer; }
+
+  /* ── PORTFOLIO ── */
+  #portfolio { background: var(--white); }
+  .portfolio-intro { max-width: 560px; margin-bottom: 3.5rem; }
+  .portfolio-intro p { color: var(--ink-muted); font-size: 1rem; margin-top: .8rem; }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .portfolio-card { border-radius: 4px; overflow: hidden; border: 1px solid var(--blue-mid); transition: transform .25s, box-shadow .25s; }
+  .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(26,60,170,.12); }
+  .portfolio-card-img { aspect-ratio: 4/3; background: var(--blue-light); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .portfolio-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portfolio-card-img .label { font-family: var(--serif); font-style: italic; color: var(--blue); font-size: 1rem; opacity: .6; }
+  .portfolio-card-body { padding: 1.3rem 1.5rem; }
+  .portfolio-card-tag { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: .4rem; }
+  .portfolio-card-body h4 { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; color: var(--ink); margin-bottom: .4rem; }
+  .portfolio-card-body p { font-size: .85rem; color: var(--ink-muted); }
+
+  /* ── CONTATTI ── */
+  #contatti { background: var(--blue-light); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contatti-info p { color: var(--ink-muted); font-size: 1rem; margin-bottom: 2rem; }
+  .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; font-size: .92rem; color: var(--ink-muted); }
+  .contact-detail .icon { width: 38px; height: 38px; flex-shrink: 0; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; color: var(--white); }
+  form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .form-group { display: flex; flex-direction: column; gap: .4rem; }
+  label { font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-muted); }
+  input, textarea, select { font-family: var(--sans); font-size: .95rem; font-weight: 300; color: var(--ink); background: var(--white); border: 1.5px solid var(--blue-mid); border-radius: 2px; padding: .85rem 1rem; outline: none; transition: border-color .2s; width: 100%; }
+  input:focus, textarea:focus, select:focus { border-color: var(--blue); }
+  textarea { resize: vertical; min-height: 130px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .btn-submit { background: var(--blue); color: var(--white); border: none; padding: 1rem 2.4rem; font-family: var(--sans); font-size: .88rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; border-radius: 2px; transition: background .2s, transform .2s; align-self: flex-start; }
+  .btn-submit:hover { background: var(--blue-dark); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--ink); color: rgba(255,255,255,.45); text-align: center; padding: 2.5rem 5%; font-size: .82rem; letter-spacing: .04em; }
+  footer strong { color: rgba(255,255,255,.8); font-weight: 400; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    #hero, #about, #contatti { grid-template-columns: 1fr; gap: 2.5rem; }
+    #hero { padding-top: 7rem; }
+    .hero-image { order: -1; }
+    .photo-frame { width: 260px; height: 320px; margin: 0 auto; }
+    .servizi-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .servizi-grid, .prezzi-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMAZIONI ── */
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up:nth-child(2) { transition-delay: .1s; }
+  .fade-up:nth-child(3) { transition-delay: .2s; }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">Federica Fanì</a>
+  <ul class="nav-links">
+    <li><a href="#about">Chi sono</a></li>
+    <li><a href="#servizi">Servizi</a></li>
+    <li><a href="#prezzi">Prezzi</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contatti" class="nav-cta">Contattami</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Social Media Manager · Roma</div>
+    <h1>Racconto la tua storia<br>dove <em>conta davvero.</em></h1>
+    <p class="hero-desc">Strategia, contenuti e fotografia per locali, negozi e professionisti che vogliono una presenza social autentica e che converte.</p>
+    <div class="btn-group">
+      <a href="#contatti" class="btn-primary">Richiedi un preventivo</a>
+      <a href="#portfolio" class="btn-secondary">Vedi i lavori</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">3+</div><div class="stat-label">anni di esperienza</div></div>
+      <div><div class="stat-num">IT · EN · ES · FR</div><div class="stat-label">lingue di lavoro</div></div>
+      <div><div class="stat-num">Roma</div><div class="stat-label">e remoto ovunque</div></div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="photo-frame">
+      <!-- FOTO HERO: sostituisci il div sotto con <img src="NOMEFILE" alt="Federica Fanì"> -->
+      <img src="foto_2.jpg" alt="Federica Fanì">
+    
+     
+    </div>
+  </div>
+</section>
+
+<!-- CHI SONO -->
+<section id="about">
+  <div class="about-text fade-up">
+    <div class="section-tag">Chi sono</div>
+    <h2>Una professionista<br>tra <em>parole e immagini</em></h2>
+    <p>Mi chiamo Federica Fanì, sono una Social Media Manager con base a Roma e lavoro in italiano, inglese, spagnolo e francese. Ho una formazione in comunicazione e mediazione linguistica, e una passione genuina per il racconto digitale.</p>
+    <p>Il mio approccio non è da agenzia: seguo ogni cliente in prima persona, con una voce costruita sul loro carattere, non su un template. So che ogni realtà è diversa — e il mio lavoro è far emergere quella differenza sui social.</p>
+    <p>Ho gestito e gestisco profili di locali e attività nel cuore di Roma, occupandomi di tutto: dalla strategia alla fotografia, dal copy ai reel. Zero standardizzazione, massima attenzione.</p>
+    <div class="about-pills">
+      <span class="pill">Strategia editoriale</span>
+      <span class="pill">Copywriting</span>
+      <span class="pill">Fotografia</span>
+      <span class="pill">Reels &amp; Video</span>
+      <span class="pill">Local SEO social</span>
+      <span class="pill">Analisi dati</span>
+      <span class="pill">4 lingue</span>
+    </div>
+  </div>
+  <div class="about-photo fade-up">
+    <!-- FOTO CHI SONO: sostituisci il div sotto con <img src="NOMEFILE" alt="Federica Fanì"> -->
+    <img src="foto.png" alt="Federica Fanì">
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section id="servizi">
+  <div class="servizi-intro">
+    <div>
+      <div class="section-tag">Cosa faccio</div>
+      <h2>Servizi su <em>misura</em></h2>
+    </div>
+    <p class="servizi-desc">Ogni progetto nasce da un confronto diretto. Non esistono pacchetti identici perché non esistono attività identiche. Questi sono i servizi che offro — combinabili e personalizzabili.</p>
+  </div>
+  <div class="servizi-grid">
+    <div class="servizio fade-up">
+      <div class="servizio-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <h3>Gestione social completa</h3>
+      <p>Mi occupo di tutto, dalla strategia alla pubblicazione, così tu puoi concentrarti su quello che sai fare meglio.</p>
+      <ul>
+        <li>Piano editoriale mensile</li>
+        <li>Creazione contenuti (testo + grafica)</li>
+        <li>Gestione dei commenti e DM</li>
+        <li>Report mensile con analisi dati</li>
+        <li>Ottimizzazione continua</li>
+      </ul>
+    </div>
+    <div class="servizio fade-up">
+      <div class="servizio-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 00-2 2v9a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2h-3L14.5 4z"/><circle cx="12" cy="13" r="3"/></svg>
+      </div>
+      <h3>Fotografia &amp; Contenuti visivi</h3>
+      <p>Shooting fotografico professionale per alimentare i tuoi profili con immagini che catturano l'identità del brand.</p>
+      <ul>
+        <li>Shooting prodotti e ambienti</li>
+        <li>Reel e video brevi</li>
+        <li>Stories animate</li>
+        <li>Editing e post-produzione</li>
+        <li>Libreria contenuti riutilizzabili</li>
+      </ul>
+    </div>
+    <div class="servizio fade-up">
+      <div class="servizio-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h3>Copywriting &amp; Strategia</h3>
+      <p>La parola giusta al momento giusto. Costruiamo insieme una voce riconoscibile e una strategia che funziona davvero.</p>
+      <ul>
+        <li>Brand voice e tone of voice</li>
+        <li>Caption e copy per post</li>
+        <li>Strategia hashtag localizzata</li>
+        <li>Consulenza profilo e bio</li>
+        <li>Analisi competitor</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PREZZI -->
+<section id="prezzi">
+  <div class="section-tag">Investimento</div>
+  <h2>Prezzi <em>trasparenti</em></h2>
+  <p class="prezzi-note">Questi sono i pacchetti standard di riferimento. Ogni realtà è diversa: scrivimi per un preventivo costruito sulle tue esigenze specifiche.</p>
+  <div class="prezzi-grid">
+    <div class="piano fade-up">
+      <h3>Base</h3>
+      <div class="piano-price">€ 400 <span>/mese</span></div>
+      <div class="piano-from">a partire da</div>
+      <ul>
+        <li>Piano editoriale mensile</li>
+        <li>12 post al mese (feed)</li>
+        <li>Copy e caption inclusi</li>
+        <li>Strategia hashtag</li>
+        <li>Report mensile</li>
+        <li>1 canale social</li>
+      </ul>
+    </div>
+    <div class="piano featured fade-up">
+      <span class="piano-badge">Più richiesto</span>
+      <h3>Standard</h3>
+      <div class="piano-price">€ 650 <span>/mese</span></div>
+      <div class="piano-from">a partire da</div>
+      <ul>
+        <li>Piano editoriale mensile</li>
+        <li>16 post + 4 reel al mese</li>
+        <li>Copy, caption e stories</li>
+        <li>Strategia hashtag avanzata</li>
+        <li>Gestione commenti</li>
+        <li>Report + call mensile</li>
+        <li>2 canali social</li>
+      </ul>
+    </div>
+    <div class="piano fade-up">
+      <h3>Full</h3>
+      <div class="piano-price">€ 950 <span>/mese</span></div>
+      <div class="piano-from">a partire da</div>
+      <ul>
+        <li>Piano editoriale mensile</li>
+        <li>Post + reel + stories illimitati</li>
+        <li>Shooting fotografico mensile</li>
+        <li>Copy completo multicanale</li>
+        <li>Gestione community</li>
+        <li>Report avanzato + call</li>
+        <li>Fino a 3 canali social</li>
+      </ul>
+    </div>
+  </div>
+  <p class="prezzi-footer">Hai esigenze particolari o un budget diverso? <a href="#contatti">Scrivimi</a> — troveremo la soluzione giusta.</p>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="portfolio-intro">
+    <div class="section-tag">Lavori recenti</div>
+    <h2>Dal <em>campo</em></h2>
+    <p>Esempi concreti di progetti seguiti, dalla strategia alla pubblicazione. Ogni caso è diverso — questo è il punto.</p>
+  </div>
+  <div class="portfolio-grid">
+    <div class="portfolio-card fade-up">
+      <div class="portfolio-card-img">
+        <!-- PORTFOLIO 1: sostituisci con <img src="portfolio1.jpg" alt="Magnebevo"> -->
+        <span class="label">Immagine in arrivo</span>
+      </div>
+      <div class="portfolio-card-body">
+        <div class="portfolio-card-tag">Bar · Roma Pigneto</div>
+        <h4>Magnebevo</h4>
+        <p>Gestione completa del profilo Instagram: strategia, copy, fotografia e reel. Brand voice ironica e locale.</p>
+      </div>
+    </div>
+    <div class="portfolio-card fade-up">
+      <div class="portfolio-card-img">
+        <!-- PORTFOLIO 2: sostituisci con <img src="portfolio2.jpg" alt="Sunday Bloody Sunday"> -->
+        <span class="label">Immagine in arrivo</span>
+      </div>
+      <div class="portfolio-card-body">
+        <div class="portfolio-card-tag">Campagna · Aperitivo</div>
+        <h4>Sunday Bloody Sunday</h4>
+        <p>Campagna social per evento settimanale: naming, copy e visual per il cocktail Bloody Mary signature.</p>
+      </div>
+    </div>
+    <div class="portfolio-card fade-up">
+      <div class="portfolio-card-img">
+        <!-- PORTFOLIO 3: sostituisci con <img src="portfolio3.jpg" alt="Aperitivo Primaverile"> -->
+        <span class="label">Immagine in arrivo</span>
+      </div>
+      <div class="portfolio-card-body">
+        <div class="portfolio-card-tag">Contenuti · Stagionale</div>
+        <h4>Aperitivo Primaverile</h4>
+        <p>Serie di contenuti stagionali per promozione aperitivo: cocktail + sfizi a prezzo fisso, tone ironico e caldo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+  <div class="contatti-info fade-up">
+    <div class="section-tag">Contatti</div>
+    <h2>Parliamoci<br><em>senza impegno</em></h2>
+    <p>Hai un locale, un negozio, uno studio o un'attività che vuole crescere sui social? Scrivimi — la prima call conoscitiva è gratuita.</p>
+    <div class="contact-detail">
+      <div class="icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <span>federica.fani96@gmail.com</span>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </div>
+      <a href="https://instagram.com/fedefany" target="_blank" style="color:inherit;text-decoration:none;">@fedefany</a>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <span>Roma, Italia · disponibile da remoto</span>
+    </div>
+  </div>
+  <form class="fade-up" onsubmit="handleSubmit(event)">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="mario@esempio.com" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="tipo">Tipo di attività</label>
+      <select id="tipo" name="tipo">
+        <option value="">Seleziona...</option>
+        <option>Bar / Ristorante / Locale</option>
+        <option>Negozio / Retail</option>
+        <option>Professionista / Studio</option>
+        <option>Altro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="messaggio">Raccontami la tua realtà</label>
+      <textarea id="messaggio" name="messaggio" placeholder="Di cosa ha bisogno la tua attività? Hai già profili social attivi? Hai un budget indicativo?" required></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Invia messaggio</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2026 <strong>Federica Fanì</strong> · Social Media Manager · Roma</p>
+  <p style="margin-top:.5rem;">federica.fani96@gmail.com</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    const open = links.style.display === 'flex';
+    links.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:white;padding:1.5rem 5%;border-bottom:1px solid #c7d4f7;z-index:99;';
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = 'Messaggio inviato ✓';
+    btn.style.background = '#0f6e56';
+    setTimeout(() => { btn.textContent = 'Invia messaggio'; btn.style.background = ''; e.target.reset(); }, 3000);
+  }
+</script>
+</body>
+</html>

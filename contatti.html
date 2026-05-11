@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti — Federica Fanì</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#1a3caa;--blue-dark:#102880;--blue-light:#eef2ff;--blue-mid:#c7d4f7;--gold:#C9A84C;--white:#ffffff;--ink:#0d1526;--ink-muted:#4a5878;--ink-faint:#8a97b5;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);overflow-x:hidden;font-weight:300;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5%;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--blue-mid);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 24px rgba(26,60,170,.08)}
+.nav-logo{font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--blue);text-decoration:none}
+.nav-links{display:flex;gap:1.6rem;list-style:none;align-items:center}
+.nav-links a{font-size:.8rem;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-cta{color:var(--white)!important;background:var(--blue);padding:.5rem 1.2rem;border-radius:2px}
+.nav-cta:hover{background:var(--blue-dark)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{display:block;width:24px;height:2px;background:var(--ink)}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.contact-left{background:var(--blue);padding:9rem 5% 5rem;display:flex;flex-direction:column;justify-content:center}
+.contact-right{padding:9rem 5% 5rem;display:flex;flex-direction:column;justify-content:center}
+.section-tag{font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-mid);display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.section-tag::before{content:'';display:block;width:28px;height:1px;background:var(--gold)}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.6rem);font-weight:300;line-height:1.15;color:var(--white);margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--gold)}
+.lead{font-size:1rem;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:2.5rem}
+.contact-detail{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;font-size:.92rem;color:rgba(255,255,255,.7)}
+.contact-detail .icon{width:38px;height:38px;flex-shrink:0;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--white)}
+.contact-detail a{color:rgba(255,255,255,.7);text-decoration:none}
+.contact-detail a:hover{color:var(--white)}
+form{display:flex;flex-direction:column;gap:1.1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+label{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted)}
+input,textarea,select{font-family:var(--sans);font-size:.95rem;font-weight:300;color:var(--ink);background:var(--white);border:1.5px solid var(--blue-mid);border-radius:2px;padding:.85rem 1rem;outline:none;transition:border-color .2s;width:100%}
+input:focus,textarea:focus,select:focus{border-color:var(--blue)}
+textarea{resize:vertical;min-height:130px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{background:var(--blue);color:var(--white);border:none;padding:1rem 2.4rem;font-family:var(--sans);font-size:.88rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s,transform .2s;align-self:flex-start}
+.btn-submit:hover{background:var(--blue-dark);transform:translateY(-2px)}
+footer{background:var(--ink);color:rgba(255,255,255,.45);text-align:center;padding:2.5rem 5%;font-size:.82rem}
+footer strong{color:rgba(255,255,255,.8);font-weight:400}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.contact-layout{grid-template-columns:1fr}.contact-left{padding-top:7rem;padding-bottom:3rem}.contact-right{padding-top:3rem}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Federica Fanì</a>
+  <ul class="nav-links">
+    <li><a href="chi-sono.html">Chi sono</a></li>
+    <li><a href="servizi.html">Servizi</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="certificazioni.html">Certificazioni</a></li>
+    <li><a href="prezzi.html">Prezzi</a></li>
+    <li><a href="contatti.html" class="nav-cta active">Contattami</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="contact-layout">
+  <div class="contact-left fade-up">
+    <div class="section-tag">Scriviamo</div>
+    <h1>Parliamoci<br><em>senza impegno</em></h1>
+    <p class="lead">La prima call conoscitiva è gratuita. Raccontami la tua attività e vediamo insieme come posso aiutarti.</p>
+    <div class="contact-detail">
+      <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <a href="mailto:federica.fani96@gmail.com">federica.fani96@gmail.com</a>
+    </div>
+    <div class="contact-detail">
+      <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+      <a href="https://instagram.com/fedefany" target="_blank">@fedefany</a>
+    </div>
+    <div class="contact-detail">
+      <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <span>Roma, Italia · disponibile da remoto</span>
+    </div>
+  </div>
+  <div class="contact-right fade-up">
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group"><label for="nome">Nome</label><input type="text" id="nome" name="nome" placeholder="Mario Rossi" required></div>
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="mario@esempio.com" required></div>
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo di attività</label>
+        <select id="tipo" name="tipo">
+          <option value="">Seleziona...</option>
+          <option>Bar / Ristorante / Locale</option>
+          <option>Negozio / Retail</option>
+          <option>Professionista / Studio</option>
+          <option>Altro</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="messaggio">Raccontami la tua realtà</label><textarea id="messaggio" name="messaggio" placeholder="Di cosa ha bisogno la tua attività? Hai già profili social attivi? Hai un budget indicativo?" required></textarea></div>
+      <button type="submit" class="btn-submit">Invia messaggio</button>
+    </form>
+  </div>
+</div>
+<footer>
+  <p>© 2026 <strong>Federica Fanì</strong> · Social Media Manager · Roma</p>
+  <p style="margin-top:.5rem;">federica.fani96@gmail.com</p>
+</footer>
+<script>
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)});
+const obs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+function toggleMenu(){const l=document.querySelector('.nav-links');const o=l.style.display==='flex';l.style.cssText=o?'':'display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:white;padding:1.5rem 5%;border-bottom:1px solid #c7d4f7;z-index:99;'}
+function handleSubmit(e){e.preventDefault();const btn=e.target.querySelector('.btn-submit');btn.textContent='Messaggio inviato ✓';btn.style.background='#0f6e56';setTimeout(()=>{btn.textContent='Invia messaggio';btn.style.background='';e.target.reset()},3000)}
+</script>
+</body>
+</html>
